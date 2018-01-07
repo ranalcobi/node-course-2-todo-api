@@ -9,7 +9,7 @@ var Todo = mongoose.model('Todo', {
     },
     completed: {
         type: Boolean,
-        default: false,
+        default: false
     },
     completedAt: {
         type: Number,
@@ -17,4 +17,4 @@ var Todo = mongoose.model('Todo', {
     }
 });
 
-module.exports = {Todo}
+module.exports = { Todo };
