@@ -19,7 +19,11 @@ const users = [{
 }, {
     _id : userTwoId,
     email : 'ran2@gmail.com',
-    password: 'userTwoPass'
+    password: 'userTwoPass',
+    tokens: [{
+        access: 'auth',
+        token: jwt.sign({ _id: userTwoId, access: 'auth' }, 'qwe123').toString()
+    }]
 }];
 
 
@@ -27,12 +31,14 @@ const todos = [
     {
         _id: new ObjectID(),
         text: "First test todo",
-        completed: false
+        completed: false,
+        _creator: userOneId
     }, {
         _id: new ObjectID(),
         text: "Second test todo",
         completed: true,
-        completedAt: 333
+        completedAt: 333,
+        _creator: userTwoId
     }];
     
 
@@ -43,7 +49,7 @@ const populateTodos = (done) => {
 };
 
 const populateUsers = function(done) {
-    this.timeout(5000);
+    this.timeout(000);
     User.remove({}).then(() => {
         var userOne = new User(users[0]).save();
         var userTwo = new User(users[1]).save();
