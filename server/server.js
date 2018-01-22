@@ -19,7 +19,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
-//post new todo
+//post new todo //test
 app.post('/todos', authenticate, (req, res) => {
     var todo = new Todo({
         text: req.body.text,
